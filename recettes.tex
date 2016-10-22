@@ -1,0 +1,356 @@
+\documentclass[french,11pt,twoside]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{ifthen}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\geometry{tmargin=2.4cm,bmargin=2.4cm,innermargin=2cm,outermargin=2cm}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage[squaren,Gray]{SIunits}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{makeidx}
+\usepackage{psvectorian}
+\usepackage{xargs}
+\usepackage[hidelinks,hyperfootnotes=false]{hyperref}
+\usepackage{nicefrac}
+\usepackage{amssymb}
+
+
+\newcommand*{\nom}[1]{\textnormal{\textsc{#1}}}
+\newcommand{\titre}[1]{%
+\title{#1}}
+
+\newcommand{\ingredientname}{Ingrédients}
+\newcommand{\quantityname}{Quantité}
+\newcounter{etape}
+\setcounter{etape}{0}
+\newcommand{\etape}{\stepcounter{etape}\vspace{0.5cm}\par\noindent\textit{Étape \theetape} --  }
+
+\newcommand{\partie}[1]{
+	\addcontentsline{toc}{section}{#1}
+}
+
+\newenvironmentx{recette}[6][2={},4={0.48},5={0.48},6={},usedefault]{%
+	\phantomsection
+	\begin{center}
+		{\LARGE\textbf{#1}} \\
+		#2
+	\end{center}
+	\index{#1}\label{#1}\addcontentsline{toc}{subsection}{#1}
+	\ifthenelse{\equal{#6}{}}{%
+		\begin{center}
+			\begin{tabular}{@{}ll@{}}\toprule
+				\ingredientname{}&\quantityname{}\\\midrule
+				#3\\\bottomrule
+			\end{tabular}
+		\end{center}
+	}{%
+		\vspace{0.5cm}
+		\hspace*{\fill}
+		\begin{minipage}{#4\columnwidth}
+			\begin{center}
+				\begin{tabular}{@{}ll@{}}\toprule
+					\ingredientname{}&\quantityname{}\\\midrule
+					#3\\\bottomrule
+				\end{tabular}
+			\end{center}
+		\end{minipage}
+		\hspace*{\fill}
+		\begin{minipage}{#5\columnwidth}
+			\centering	\includegraphics[width=\columnwidth]{#6}
+		\end{minipage}
+		\hspace*{\fill}
+		\vspace{0.3cm}
+	}
+	\setcounter{etape}{0}
+}{%
+\vspace{0.3cm}
+\[\star\star\star\]
+\clearpage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[RE,LO]{}
+\fancyhead[RO,LE]{}
+\cfoot{}
+\fancyfoot[RO,LE]{\thepage}
+\pagestyle{fancy}
+\thispagestyle{fancy}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+{\Huge\bfseries Livre de recettes}
+
+\vspace*{1.5cm}%
+
+\end{center}
+
+\vspace*{0.5cm}
+\renewcommand{\contentsname}{Liste des recettes}
+\tableofcontents
+\end{titlepage}
+
+\partie{Poissons}
+
+\begin{recette}{Sandwich américain}[pour 6 personnes]{%
+Œufs entiers&3\\
+Vinaigre de vin rouge&\\
+Moutarde&\\
+Huile de tournesol&\\
+Raisins de corinthe&1 petit sachet\\
+Tomates&3\\
+Poivron rouge&1 petit ou $\nicefrac{1}{2}$ gros\\
+Crème fraiche épaisse&$\unit{100}{\milli\liter}$\\
+Pain de mie blanc Harry's 24 tranches&1\\
+Cornichons&6 ou  7\\
+Thon à l'huile&$\unit{450}{\gram}$
+}[0.6][0.36][images/sandwichamericain]
+\etape Pour la mayonnaise : mettre au fond du mixer une cuillère à soupe de moutarde, un peu de vinaigre, du sel et du poivre et les 3 œufs entiers. Mélanger et rajouter l'huile si nécessaire, puis la mettre au frigo.
+\etape Peler les tomates, les épépiner et les couper en tous petits morceaux. Faire la même chose avec les cornichons. Égoutter le thon, l'émietter et le rajouter aux tomates et aux cornichons. Couper le poivron en petits morceaux et le rajouter au mélange. Ajouter la crème. Couper les raisins de corinthe en petits morceaux et les verser dans le mélange. Pour finir, rajouter de la mayonnaise jusqu'à l'obtention d'une pâte facile à tartiner sur le pain de mie. Goûter pour rectifier l'assaisonnement.
+\etape Enlever la croûte du pain de mie sur toutes les tranches. Sur un plat long, disposer l'une à côté de l'autre quatre tranches de pain. Les tartiner avec la préparation (ni trop peu, ni trop épais). Répéter l'opération en finissant par une couche de pain. Il doit y avoir $6$ couches de pain en tout, les entames étant utilisées même si elles ont plus de croûte. Bien tasser avec la main. Prendre un linge mouillé propre et en envelopper le pain de mie. Mettre au frigo et laisser reposer ainsi.
+\etape Le lendemain, peu de temps avant de la manger, répartir le reste de mayonnaise sur toutes les faces du sandwich avec une spatule. Décorer avec des morceaux de poivron, salade, poivre rose, ciboulette, tranches de concombre, etc.
+\end{recette}
+
+\partie{Viandes}
+
+\begin{recette}{Blanquette de veau}[pour 8 personnes]{%8 personnes
+Veau pour blanquette&$\unit{1{,}8}{\kilogram}$\\
+Gros oignons&2\\
+Clous de girofles&2\\
+Carottes&3\\
+Poireaux&2\\
+Champignons de Paris (frais)&$\unit{300}{\gram}$\\
+Citron&1\\
+Bouquet garni (Ducros en sachet)&1\\
+Farine&$\unit{70}{\gram}$\\
+Beurre&$\unit{100}{\gram}$\\
+Crème fraîche&$\unit{10}{\centi\liter}$\\
+Vin blanc&1 bouteille\\
+Sel et poivre&
+}[0.5][0.46][images/blanquette]
+\etape Placer la viande de veau, coupée en morceaux de $\unit{50}{\gram}$ environ, dans un grand faitout et la couvrir très largement avec une moitié d'eau froide et une moitié de vin blanc (au moins $\unit{2{,}5}{\liter}$). Porter à ébullition sur feu moyen. Pendant ce temps, éplucher les légumes ; tailler les carottes et le blanc des poireaux (attention au sable à l'intérieur) à votre goût. Éplucher les oignons et les piquer avec les clous de girofles. Dès les premiers bouillons et l'apparition des l'écume grisâtre, l'enlever avec une écumoire. Puis ajouter les oignons, les carottes, les poireaux et le bouquet garni. Saler et poivrer. Couvrir et régler le feu pour qu'un faible bouillonnement se maintienne. Laisser cuire 45 minutes.
+\etape Dans une grande casserole, faire fondre les $\unit{100}{\gram}$ de beurre à feu doux. Une fois fondu, incorporer la farine et remuer bien pour former un roux blanc. Le laisser cuire 5 minutes à feu doux. Enlever la casserole du feu et la laisser de côté. Enlever le bout terreux des champignons et les éplucher. Les couper en quartiers et les arroser de jus de citron, puis les mettre de côté. Égoutter la viande et les légumes une fois cuits dans une passoire en \emph{récupérant le bouillon}, ne pas oublier de retirer le sachet du bouquet garni. Faire réduire ce bouillon d'environ un tiers en le chauffant dans une casserole. Remettre la casserole du roux sur un feu doux et verser petit à petit le bouillon dans le roux pour délayer. Mélanger constamment avec un fouet. Remettre toute la sauce obtenue ainsi que la viande et ces légumes dans le faitout du départ. Enlever les oignons piqués de clous de girofle. Ajouter les champignons citronnés.
+\etape Faire mijoter le tout 20 minutes à feu doux. Si la sauce semble trop épaisse, rajouter un peu d'eau. Après ces 20 minutes de cuisson, ajouter la crème et remuer. À partir de ce moment, la préparation ne doit surtout plus bouillir. Goûter et rectifier l'assaisonnement si nécessaire. Servir avec du riz. Ce plat peut se réchauffer sans problème à feu doux.
+\end{recette}
+
+\begin{recette}{Quiche lorraine}[pour 4 personnes]{
+Tranches de lard fumé ($\unit{1}{\centi\meter}$ d'épaisseur)&4\\
+Œufs&2\\
+Crème fleurette en brique&$\unit{33}{\centi\liter}$\\
+Lait&$\unit{20}{\centi\liter}$\\
+Moule à tarte&$\varnothing\;\unit{26}{\centi\meter}$\\
+Pâte brisée&\\
+Fromage râpé&$\unit{50}{\gram}$\\
+Moutarde&1 cuillère à café\\
+Noix de muscade&\\
+Sel et poivre&}[0.6][0.36][images/quiche]
+\etape Étaler la pâte avec son papier sulfurisé dans le moule. Bien faire adhérer la pâte sur les bords à la hauteur voulue. Piquer le fond de la tarte avec une fourchette. Pour éviter les bulles d'air, éventuellement rajouter une poignée de haricots secs sur le fond. Faire précuire au four la pâte 10 minutes après un préchauffage à $\unit{220}{\celsius}$. Sortir du four, laisser refroidir et à l'aide d'une fourchette bien recoller la pâte sur les bords.
+\etape Enlever l'excès de gras et la couenne du lard fumé. Faire dorer sans rajouter de matière grasse dans une poêle anti-adhésive les tranches de lard. Les égoutter sur un papier absorbant et les découper en lardons, les réserver.
+\etape Dans une jatte, déposer la moutarde, casser les 2 œufs entiers par dessus, remuer comme pour une omelette. Rajouter la crème, le lait, la moitié du fromage rapé, les lardons, la noix de muscade (une pincée), le poivre et un peu de sel. Bien remuer puis verser l'appareil à quiche sur la pâte. Rajouter le reste du fromage râpé sur le dessus.
+\etape Faire cuire 25 minutes à four préchauffé $\unit{220}{\celsius}$. Si le dessus de la quiche n'est pas assez doré, rajouter 5 minutes de gril.
+\end{recette}
+
+\begin{recette}{Strogonoff}[pour 6 personnes]{
+Gros filet mignon de porc&$\unit{1}{\kilogram}$\\
+Boîte de champignons émincés&$\unit{400}{\gram}$\\
+Ketchup&\\
+Cumin en pourdre&\\
+Crème en brique&$\unit{20}{\centi\liter}$\\
+Gros oignon&1\\
+Huile d'olive&\\
+Grosses gousses d'ail&4\\
+Sauce Worcestershire&2 cuillères à soupe\\
+Sel et poivre&}[0.5][0.46][images/strogonoff]
+\etape Enlever le gras du filet mignon. Découper le filet en fines lamelles, réserver. Éplucher et émincer l'oignon. Éplucher et presser l'ail. Faire chauffer dans une grande casserole ou cocotte 3 cuillères à soupe d'huile d'olive. Y faire dorer l'oignon. Lorsqu'il commence à colorer, rajouter l'ail. Lorsque l'ail et l'oignon sont bien colorés, les enlever et jeter la viande dans la casserole encore chaude. Faire cuire et dorer la viande pendant 15 à 20 minutes en remuant souvent. Baisser le feu et rajouter le mélange oignon-ail.
+\etape Verser la boîte de champignons égouttés dans la casserole. Ajouter la sauce Worcestershire, 2 cuillères à café de cumin, du sel et du poivre. Remuer. Ajouter $\unit{100}{\milli\liter}$ d'eau et remuer. Ajouter la brique de crème et 3 cuillères à soupe de ketchup. Remuer et laisser cuire à feu doux 10 minutes.
+\end{recette}
+
+\begin{recette}{Boulettes suédoises}[pour 8 personnes]{%
+Œuf&1\\
+Oignons finement hachés&4 cuillères à soupe\\
+Chapelure&3 cuillères à soupe\\
+Pomme de terre bouillie&1\\
+B\oe{}uf haché maigre&$\unit{500}{\gram}$\\
+Crème épaisse&5 cuillères à soupe\\
+Persil haché&\\
+Sel&1 cuillère à café\\
+Beurre&2 cuillères à soupe\\
+Huile&2 cuillères à soupe
+}[0.47][0.48][images/boulettessuedoises]
+\etape À feu modéré, faire fondre le beurre dans une petite pêle. Une fois la mousse résorbée, faire cuire les oignons pendant environ 5 minutes. Ils doivent être tendres et transparents mais pas brunis.
+\etape Dans un grand récipient, disposer les oignons, la pomme de terre écrasée réduite en purée, la chapelure, la viande, la crème, le sel et l'\oe{}uf. Rajouter le persil. Mélanger le tout énergiquement jusqu'à l'homogénéité. Former de petites boulettes et ls placer sur une plaque allant au four recouverte d'une pellicule plastique. Laisser reposer les boulettes au réfrigérateur une heure avant la cuisson\footnote{Obligatoire : c'est parce qu'elles sont froides qu'elles tiennent à la cuisson.}.
+\etape À feu vif, lier le beurre et l'huile dans un grand pêlon. Une fois la mousse résorbée, y placer les boulettes, 8 ou 10 à la fois, puis réduire à feu doux et faire frire les boulettes tout en secouant la poêle pour que la viande se roule bien dans le gras et que les boulettes conservent leur forme. Au bout de 8 à 10 minutes, les boulettes doivent être brunies extérieurement et ne pas être rosées au centre. Ajouter beurre et huile si nécessaire, au fur et à mesure, et disposer chaque nouvelle série de boulettes dans un plat que l'on gardera au four à $\unit{200}{\celsius}$.
+\end{recette}
+
+\begin{recette}{Poulet sauce soja-gingembre}[pour 2 personnes]{%
+Escalopes de dinde (assez grosses)&2\\
+Sauce soja&4 cuillères à soupe\\
+Gousses d'ail&2\\
+Gingembre en poudre&1 cuillère à soupe\\
+Sauce piquante&1 cuillère à café\\
+Crème épaisse&$\unit{200}{\milli\liter}$\\
+Eau&Moitié d'un petit verre\\
+Huile d'olive&\\
+Sel \& poivre
+}[1][0][]
+
+\etape{} Enlever les parties grasses et nerveuse des escalopes avec un couteau de cuisin. Couper ensuite les escalopes en lanière, mettre dans un plat creux. Arroser avec 4 cuillères à soupe de sauce soja, éplucher et presser les deux grousses d'ail au presse-ail et les rajouter dans le plat.  Ajouter encore une cuillère à soupe de poudre de gingembre (ou du gingembre frais râpé), 1 cuillère à café de sauce piquante, du poivre et très peu de sel. Bien mélanger le tout, couvrir avec un film alimentaire ou un couvercle et laisser mariner (pas dans le frigo) pendant au moins un heure.
+
+\etape{} Faire chauffer une poêle anti-adhésive à feu moyen, et quand c'est chaud y verser la préparation. Remuer régulièrement   jusqu'à cuisson complète de la dinde. Il faut même que cela commence à dorer et attacher un peu au fond de la poêle pour récupérer les sucs en délayant avec de l'eau et de la crème. Baisser le feu sur doux et verser le demi-verre d'eau. Bien remuer pour décoller les sucs. Ajouter la moitié de la brique de crème environ. Remuez, faire chauffer encore 5 minutes.
+
+\end{recette}
+
+\begin{recette}{Colombo}[Pour 4 personnes]{%
+Filet mignon de porc taillé en morceaux&$\unit{800}{\gram}$ à $\unit{1}{\kilogram}$\\
+Courgette&1\\
+Bananes&2\\
+Tomate&1\\
+Lait de coco&$\unit{20}{\centi\liter}$\\
+Crème fraîche&4 cuillères à soupe\\
+Citron vert&1\\
+Oignon émincé&1\\
+Gousses d'ail pressées&3\\
+Piment vert émincé (facultatif)&1\\
+Poudre de colombo ou curry&3 cuillères à soupe\\
+Coriandre&\\
+Raisins de corinthe&Une grosse poignée\\
+Huile d'olive, sel, poivre
+}
+
+\etape{} Éplucher et découper la courgette et la tomate en petits morceaux et les bananes en rondelles épaisses.
+
+\etape{} Dans une grande cocotte, faire chauffer l'huile d'olive, y saisir les morceaux de viande à feu vif pour les colorer sur toutes les faces. Faire bien cuire et dorer. Ajouter l'oignon, l'ail, la poudre de colombo/curry, la courgette, la tomate, le piment, le jus de citron vert et les raisins. Laisser cuire 5 minutes à feu vif en remuant régulièrement.
+
+\etape{} Verser le lait de coco et la crème, puis ajouter les bananes. Assaisonner en sel et poivre, remuer et laisser mijoter au moins 30 ou 40 minutes à feu doux jusqu'à ce que les légumes soient cuits et que la sauce ait un peu réduit. Attention à ne pas faire bouillir le lait et la crème !
+
+\etape{} À la fin de la cuisson, vérifier l'assaisonnement et parsemer le plat de coriandre.
+
+\end{recette}
+
+\partie{Accompagnements}
+
+\begin{recette}{Riz pilaf}[pour 4 à 5 personnes]{%
+Riz basmati&un grand verre\\
+Bouillon cube de volaille&1\\
+Sel et poivre&\\
+Huile (sauf olive)&3 cuillères à soupe\\
+Eau&un grand verre et demi
+}[0.5][0.46][images/riz]
+\etape Faire chauffer les 3 cuillères à soupe d'huile dans une grande casserole. Y verser le riz et remuer régulièrement jusqu'à ce qu'il grille (le feu doit être assez fort). Surveiller constamment pour ne pas qu'il brûle. Lorsqu'il est bien doré, baisser le feu sur moyen et ajouter le verre et demi d'eau. Ajouter en l'émiettant le bouillon cube. Saler et poivrer, remuer. Baisser le feu sur doux, couvrir et laisser cuire \emph{sans remuer} pendant 20 minutes.
+\etape L'eau doit être complètement absorbée. Enlever le couvercle, et toujours \emph{sans remuer} remettre le feu sur fort pour faire \enquote{croûter} le riz pendant 7 minutes.
+\end{recette}
+
+\begin{recette}{Coleslaw}[pour 6 personnes]{%
+Chou blanc&une grosse moitié\\
+Carottes&3 grosses\\
+Oignon rouge&1 petit\\
+Raisins de corinthe&1 petit sachet\\
+Yaourt nature&1\\
+Mayonnaise&2 grosses cuillerées à soupe\\
+Aneth haché frais ou en poudre&\\
+Vinaigre de vin blanc&1 cuillère à soupe\\
+Sel et poivre&
+}[0.6][0.36][images/coleslaw]
+\etape Faire tremper dans un bol rempli d'eau les raisins de corinthe. Éplucher les 3 carottes et couper les bouts. Les râper sur une râpe fine. Verse les carottes râpées dans le plat de service. Couper le demi-chou en deux, enlever la côte et les feuilles extérieures abimées. Couper à l'aide d'un grand couteau très aiguisé le chou en fines lanières. Ajouter aux carottes. Éplucher l'oignon rouge, enlever le germe et l'émincer. Rajouter aux carottes et aux choux. Égoutter les raisins et les rajouter au mélange.
+\etape Dans un bol, mélanger le yaourt, la mayonnaise et le vinaigre blanc. Ajouter l'aneth haché ou en poudre (environ 2 cuillères à soupe). Bien mélanger. Saler et poivrer, bien mélanger le mélange de légumes et ensuite ajouter la sauce. Mélanger à nouveau.
+\end{recette}
+
+\partie{Pâtes}
+
+\begin{recette}{Lasagnes}[Pour 6 personnes]{%
+Pâtes à lasagne&\\
+Pain de mozarella&500g\\
+Sauce bolognaise&1 pot\\
+Sauche béchamel&50 cL\\
+Coulis de tomate&20 cL\\
+Basilic frais&1 bouquet\\
+Bœuf haché&500 g\\
+Fromage râpé&2 poignées\\
+Oignon&1\\
+Ail&3 gousses\\
+Plat à gratin rectangulaire&1\\
+Huile d'olive&
+}
+
+\etape{} Émincer l'oignon et l'ail, mettre 3 cuillères à soupe d'huile d'olive dans une poêle et y faire griller l'ail et l'oignon. Rajouter la viande hachée et mélanger. Quand le mélange est cuit, rajouter le coulis de tomate et la sauce bolognaise. Saler et poivrer si nécessaire.
+
+\etape{} Dans le plat à gratin, étaler uniformément une fine couche du mélange. Découper la brique de béchamel dans un coin et répartir des grosses gouttes de béchamel sur toute la surface. Parsemer de quelques feuilles de basilic. Découper la mozarella en tranches fines et répartir 6 ou 8 tranches sur la béchamel. Couvrir avec 3 ou 4 feuilles de lasagnes (pas cuites) selon la taille du plat. Elles peuvent se chevaucher mais pas trop, sinon les couper.
+
+\etape{} Recommencer l'opération 2 fois. Il doit rester un peu de sauce bolognaise et un peu de béchamel. Mélanger les deux restes dans la poêle de la bolognaise sans refaire chauffer. Ajouter 2 grosses poignées de fromage râpé, mélange et répartir bien uniformément au dessus de la dernière couche de pâtes. Préchauffer le four à $\unit{210}{\celsius}$ , y faire cuire les lasagnes pendant 30 minutes. Si la lasagne n'est pas assez dorée sur le dessus, passer au gril le temps nécessaire.
+\end{recette}
+
+\partie{Légumes}
+
+\begin{recette}{Aubergines farcies}[Pour 4 personnes]{
+	Aubergines&2\\
+	Oignon&1\\
+	Ail&2 ou 3 gousses\\
+	Champignons&250 g\\
+	Tomates&6\\
+	Parmesan&70 g\\
+	Basilic&\\
+	Persil&\\
+	Huile d'olive&\\
+	Sel et poivre&
+}[0.40][0.56][images/aubergines_farcies]
+\etape{} Couper les aubergines en deux, les parsemer de sel et laisser reposer pendant 40 minutes pour que je jus amer s'échappe. Le nettoyer avec du papier absorbant.
+
+\etape{} Préchauffer le four à 180 °C, saler et poivrer les moitiés d'aubergines avant de les enfourner pendant 25 minutes.
+
+\etape{} Pendant ce temps, préparer la farce. Faire griller l'ail et l'oignon dans de l'huile d'olive, puis ajouter les tomates et les champignons. Cuire pendant 10 minutes puis ajouter le persil et le basilic.
+
+\etape{} Quand les aubergines sont cuites, enlever la chair à la cuillère et en garder la moitié pour la farce. Il ne reste plus qu'à farcir les aubergines, rajouter du fromage par dessus et mettre au four pendant 10 minutes.
+\end{recette}
+
+\begin{recette}{Gratin de courgettes au fromage}[Pour 6 personnes]{
+	Courgettes&3\\
+	Patates&2\\
+	Oignons&8 petits\\
+	Yaourt à la grecque&200 g\\
+	Fromage de chèvre&200 g\\
+	Féta&200 g\\
+	Aneth&\\
+	Menthe&\\
+	Farine&200 g\\
+	Levure&\\
+	Œufs&2\\
+	Huile d'olive&100 mL\\
+	Sel et poivre&\\
+	Graines de sésame&
+}[0.4][0.56][images/gratin_aubergines]
+\etape{} Râper les courgettes et les patates dans un bol.
+
+\etape{} Émincer finement les oignons, la menthe et l'aneth. Les ajouter au mélange ainsi que les œufs, la fêta le fromage de chèvre, le yaourt, l'huile d'olive, la farine et la levure. Assaisonner avec du sel et du poivre. Remuer jusqu'à obtention d'une mélange homogène. Pendant ce temps, préchauffer le four à 180 °C.
+
+\etape{} Huiler un plat à gratin, le parsemer de farine et y couler le mélanger. Ajouter les graines de sésame par dessus et enfourner, cuire pendant 45 minutes jusqu'à ce que cela dore.
+\end{recette}
+
+
+\begin{recette}{Soupe au potiron}[Pour 3 personnes]{
+	Potiron&1\\
+	Oignon&1\\
+	Ail&3 gousses\\
+	Huile d'olive&1 cuillère à soupe\\
+	Bouillon de légumes&05$\nicefrac{1}{2}$ L\\
+	Sel et poivre&\\
+	Noix de muscade&1 pincée\\
+	Crème&2 cuillères à soupe
+}[0.48][0.48][images/soupe_potiron]
+\etape{} Laver le potiron, le couper en deux, enlever les graines et la peau et le couper en petits morceaux. Émincer l'ail et l'oignon.
+
+\etape{} Faire griller l'oignon dans l'huile d'olive jusqu'à ce qu'il devienne translucide puis ajouter l'ail et le potiron. Laisser griller jusqu'à ce que le fond attache, puis ajouter un peu de bouillon et laisser cuire pendant quelques minutes.
+
+\etape{} Ajouter le reste du bouillon et de l'eau jusqu'à ce que le potiron soit complètement recouvert. Assaisonner puis faire bouillir jusqu'à ce que le potiron devienne tendre.
+
+\etape{} Mixer la préparation. Lors du service, rajouter la crème, la noix de muscade et autre assaisonnements.
+\end{recette}
+
+\end{document}
