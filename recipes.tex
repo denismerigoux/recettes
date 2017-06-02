@@ -1,0 +1,172 @@
+\documentclass[english,11pt,twoside]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{ifthen}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\geometry{tmargin=2.4cm,bmargin=2.4cm,innermargin=2cm,outermargin=2cm}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage[squaren,Gray]{SIunits}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xargs}
+\usepackage[hidelinks,hyperfootnotes=false]{hyperref}
+\usepackage{nicefrac}
+\usepackage{amssymb}
+
+
+\newcommand*{\nom}[1]{\textnormal{\textsc{#1}}}
+\newcommand{\titre}[1]{%
+\title{#1}}
+
+\newcommand{\ingredientname}{Ingredients}
+\newcommand{\quantityname}{Quantity}
+\newcounter{step}
+\setcounter{step}{0}
+\newcommand{\step}{\stepcounter{step}\vspace{0.5cm}\par\noindent\textit{Step \thestep} --  }
+
+\newcommand{\partie}[1]{
+	\addcontentsline{toc}{section}{#1}
+}
+
+\newenvironmentx{recipe}[6][2={},4={0.48},5={0.48},6={},usedefault]{%
+	\phantomsection
+	\begin{center}
+		{\LARGE\textbf{#1}} \\
+		#2
+	\end{center}
+	\index{#1}\label{#1}\addcontentsline{toc}{subsection}{#1}
+	\ifthenelse{\equal{#6}{}}{%
+		\begin{center}
+			\begin{tabular}{@{}ll@{}}\toprule
+				\ingredientname{}&\quantityname{}\\\midrule
+				#3\\\bottomrule
+			\end{tabular}
+		\end{center}
+	}{%
+		\vspace{0.5cm}
+		\hspace*{\fill}
+		\begin{minipage}{#4\columnwidth}
+			\begin{center}
+				\begin{tabular}{@{}ll@{}}\toprule
+					\ingredientname{}&\quantityname{}\\\midrule
+					#3\\\bottomrule
+				\end{tabular}
+			\end{center}
+		\end{minipage}
+		\hspace*{\fill}
+		\begin{minipage}{#5\columnwidth}
+			\centering	\includegraphics[width=\columnwidth]{#6}
+		\end{minipage}
+		\hspace*{\fill}
+		\vspace{0.3cm}
+	}
+	\setcounter{step}{0}
+}{%
+\vspace{0.3cm}
+\[\star\star\star\]
+\clearpage
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[RE,LO]{}
+\fancyhead[RO,LE]{}
+\cfoot{}
+\fancyfoot[RO,LE]{\thepage}
+\pagestyle{fancy}
+\thispagestyle{fancy}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+{\Huge\bfseries Recipe book}
+
+\vspace*{1.5cm}%
+
+\end{center}
+
+\vspace*{0.5cm}
+\renewcommand{\contentsname}{Recipe list}
+\tableofcontents
+\end{titlepage}
+
+\partie{\textit{Plats en sauce}}
+
+
+\begin{recipe}{Estouffade}[for 6 people]{%
+Beef stew& 1 - $\nicefrac{1}{2}$ lb\\
+Red wine - strong (Syrah, Merlot)& 1 bottle\\
+Large Onions& 3\\
+Butter& \\
+(Optional) Lardons& $\nicefrac{1}{2}$lbs\\
+Garlic& 3 cloves\\
+Flour& 2 tbsp\\
+Carrots - can be replaced in part by Parsnips& 4 medium-sized\\
+Beefstock& 2 cubes\\
+Bouquet Garni (sage, thyme, rosemary)& 1\\
+Cloves& 6\\
+Mushrooms& 2 lb\\
+(Optional) Roux
+}
+\step If you have lardons, cook them in butter until golden, then remove them, leaving the fat. Otherwise, continue.
+\step Cut 2 onions in quarters, spike the $3^{r}$ with the cloves
+\step Cut carrots in cylinders 1$\nicefrac{1}{2}$ - 2 inches long
+\step Dissolve the 2 cubes of beefstock in hot water (.75 cl)
+\step Melt butter and sear beefstew and the cut onions until browned
+\step Add pressed or grated garlic
+\step Add flour and sear till golden (\textit{singer})
+\step Add Carrots (and optionnally Parsnips)
+\step Add beefstock and red wine (\textit{mouiller}), add water till 90\% of the height of the solids
+\step Add Bouquet Garni and clove-spiked onion
+\step Add lardons
+\step Simmer for 2$\nicefrac{1}{2}$ - 3 hours (low heat). Taste after 1$\nicefrac{1}{2}$ hours and adjust seasonning (salt, pepper, water).
+\step Towards the end, sautée the sliced mushrooms in butter and add to pot
+\step (Optional) To thicken the sauce, make a Roux, then mix with 3 or 4 ladles of sauce before adding to the pot.
+\step Taste and adjust seasonning. Serve hot on steamed rice or potatoes.
+
+\end{recipe}
+
+
+\begin{recipe}{Estouffade à la Provençale}[for 6 people]{%
+Beef stew& 1 - $\nicefrac{1}{2}$ lb\\
+White wine - strong - Sauvignon Blanc/Muscadet& 1 bottle\\
+Large Onions& 3\\
+Olive oil& \\
+(Optional) Lardons& $\nicefrac{1}{2}$lbs\\
+Garlic& 3 cloves\\
+Flour& 2 tbsp\\
+Carrots - can be replaced in part by Parsnips& 4 medium-sized\\
+Chickenstock& 2 cubes\\
+Bouquet Garni (sage, thyme, rosemary)& 1\\
+Cloves& 6\\
+Mushrooms& 2lb\\
+Tomatoes& 1lb\\
+Pitted green Olives& $\nicefrac{1}{2} lb$
+}
+
+\step Same as Estouffade until step 12 but replace Red Wine with White Wine and butter with olive oil.
+\step Cut tomatoes in half. Remove liquid \& seeds. Cut flesh in small cubes.
+\step Right after adding the liquid (chickenbroth and white wine) add tomato cubes.
+\step 30min before end of simmering, add olives.
+\step Taste and adjust seasonning. Serve hot on steamed rice or potatoes.
+
+\end{recipe}
+
+\partie{Preparations}
+
+\begin{recipe}{Roux}{
+	Butter& 3 tbsp\\
+	Flour& Same weight as butter
+}
+\step Melt butter in pan
+\step Add flour progressively
+\step Mix and cook to desired color. The darker the nuttier, the lighter the more thickness it will bring to sauce.
+\end{recipe}
+
+
+\end{document}
